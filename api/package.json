@@ -1,0 +1,36 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "api for tasks managing",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_PATH=./dist node dist/server.js",
+    "build": "tsc",
+    "dev": "nodemon src/server.ts",
+    "test": "npm run test:unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alialtuve/todo-app.git"
+  },
+  "author": "altuve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alialtuve/todo-app/issues"
+  },
+  "homepage": "https://github.com/alialtuve/todo-app#readme",
+  "dependencies": {
+    "@types/mongoose": "^5.11.97",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.9",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2"
+  }
+}
