@@ -26,13 +26,8 @@
   * models/:  
   * routes/:  
   * services/:  
-  * repositories/:
-  * domain/:  
+  * repositories/:  
   * infraestructure/:
-    * midelwares/:  
-    * utilities/:  
-    * config/:  
-    * errors/:  
   * server.ts:
 * client/  
   * src/:  
@@ -57,7 +52,7 @@
 
 5. Run the application `cd todo-app/api` directory:
     ``` npm run dev ```
-    
+
     OR use docker compose
     ``` docker-compose up --build ```
 
