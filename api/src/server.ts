@@ -8,9 +8,9 @@ const app = express()
 
 app.use(express.json())
 app.get('/', (req, res) => {
-  res.send(`Hello Node, Typescript and Docker... ${NODE_ENV} and mongoooo`)  
+  res.send(`TO DO APP ${NODE_ENV} MERN STACK `)  
 })
 
 app.listen(PORT, () => {
-  return console.log(`To-Do App  Running on port... ${PORT} enviroment... ${NODE_ENV} and mongoose`);
+  return console.log(`To-Do App  Running on port... ${PORT}`);
 })
