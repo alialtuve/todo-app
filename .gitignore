@@ -1,6 +1,7 @@
 # compiled output
 /node_modules
 /api/node_modules
+/api/dist
 /client/node_modules
 
 # Logs
@@ -19,3 +20,4 @@ lerna-debug.log*
 # Docker
 docker-compose-prod-example.yml
 docker-compose-dev.yml
+docker-compose-v2.yml

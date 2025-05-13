@@ -1,9 +1,8 @@
-# CLIENT DOCKER FILE ON DEVELOPMENT ENVIRONMENT
 FROM node:19-alpine3.18 AS base
 
-WORKDIR /client
+WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json  ./
 
 RUN npm install
 

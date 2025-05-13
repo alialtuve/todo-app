@@ -1,10 +1,27 @@
 version: '3'
 services:
+  client:
+    container_name: todoapp-frontend
+    build:
+      context: ../client
+      dockerfile: ../client/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/vite.config.ts:/app/vite.config.js
+    networks:
+      - client-net
+    command: npm run dev
+    restart: unless-stopped
   api:
+    container_name: todoapp-backend
     build:
       context: .
+      #dockerfile: Dockerfile
       args:
         - NODE_ENV=development
+    depends_on:
+      - dbmongo
     ports:
       - "5000:5000"
     volumes:
@@ -13,23 +30,15 @@ services:
     environment:
       - PORT=5000
       - NODE_ENV=development
+    links:
+      - dbmongo
     networks:
       - api-net
       - client-net
     command: npm run dev
-  client:
-    build:
-      context: ../client
-    container_name: api-services
-    ports:
-      - "3000:3000"
-    volumes:
-      - ../client:/client
-      - /client/node_modules
-    networks:
-      - client-net
-    command: npm run dev
-  db:
+    restart: unless-stopped
+  dbmongo:
+    container_name: todoapp-db
     image: mongo:8.0.4
     env_file:
       - .env
@@ -38,13 +47,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: $MONGO_USER
       MONGO_INITDB_ROOT_PASSWORD: $MONGO_PASSWORD
-      MONGO_HOSTNAME: $MONGO_HOSTNAME
     volumes:
-      - mongo-data:/data/db
+      - mongodata:/data/db
     networks:
       - api-net
 volumes:
-  mongo-data:
+  mongodata:
 networks:
   api-net:
   client-net:
