@@ -1,18 +1,20 @@
 FROM node:19-alpine3.18 AS base
 
-WORKDIR /api
+ENV DIR /api
+
+WORKDIR ${DIR}
 
 FROM base AS dev
 
-COPY package*.json ./
+COPY package*.json ${DIR}
 
 RUN npm install
 
-COPY tsconfig*.json ./
+COPY tsconfig*.json ${DIR}
 
-COPY . .
+COPY /src ${DIR}/src
 
-ENV PORT=5000
+ENV PORT 5000
 
 EXPOSE $PORT
 

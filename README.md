@@ -14,7 +14,7 @@
 
 ## Stack and tools
 **Repo Name:**  todo-app  
-**Node**  
+**Node:** V19.0 +   
 **React**  
 **Typescript**  
 **Express**  
@@ -24,17 +24,12 @@
 ## Project Structure
 ### The project is structured with two main directories `api`: that contains backend files. And `client` folder which inside content has the user interfaces files. 
 * api/  
-  * user/
-    * Aplication/ 
-    * Domain/
-    * Infraestructure/
-  * task/ 
-    * Aplication/
-    * Domain/
-    * Infraestructure/
-  * routes/
-  * utils/
-  * frameworks /
+  * src/ 
+    * config/
+    * controllers/
+    * middleware/
+    * models/
+    * routes/
   * server.ts 
 * client/  
   * src/  
@@ -48,12 +43,12 @@
       git clone repository-url
 2. Set up environment variables. Create a `.env` file at the api folder, add `PORT`,  `USER`, `PASSWORD`, etc.  
 
-5. Run the application `cd todo-app` directory and type:  
+5. Run the application `cd todo-app/api` directory and type:  
     ``` docker-compose up --build ```
 
 ## API
-  * GET /api/task/: List of tasks.
-  * POST /api/task/: Create a new task.
-  * GET /api/task/:id: Get task detail.
-  * PUT /api/task/:id: Update task data.
-  * DELETE /api/tast/:id: Delete task.
+  * GET v1/api/task/: List of tasks.
+  * POST v1/api/task/: Create a new task.
+  * GET v1/api/task/:id: Get task detail.
+  * PUT v1/api/task/:id: Update task data.
+  * DELETE v1/api/tast/:id: Delete task.
