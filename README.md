@@ -10,7 +10,7 @@
 * [API](#api)
 
 ## Introduction
-### This app was build using Node.js with Typescript on backend side, React on frontend side and Mongo for database. You can use it to register tasks and change status. The statuses are : Created, On Process and Completed. 
+### This app was build using Node.js with Typescript on backend side, React on frontend side and Mongo for database. You can use it to register tasks and change status. The statuses are : Active, Canceled,  On Process, Stand by and Completed. 
 
 ## Stack and tools
 **Repo Name:**  todo-app  
@@ -38,12 +38,18 @@
 
 ## How to start?
 
-1. Clone the github repository: 
-    ```
-      git clone repository-url
-2. Set up environment variables. Create a `.env` file at the api folder, add `PORT`,  `USER`, `PASSWORD`, etc.  
+1. Clone the github repository:   
+    ```git clone repository-url``` 
 
-5. Run the application `cd todo-app/api` directory and type:  
+2. Set up environment variables at api. Create a `.env` file at the api folder, add `PORT`,  `USER`, `PASSWORD`, etc.
+
+2. Install backend dependencies: `cd todoapp/api` and  then   
+   ``` npm install ```
+
+3. Install frontend dependencies: `cd todoapp/client` and then  
+   ``` npm install ```
+
+4. Run the application `cd todoapp/api` directory and type:  
     ``` docker-compose up --build ```
 
 ## API
