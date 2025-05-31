@@ -20,15 +20,15 @@
   },
   "homepage": "https://github.com/alialtuve/todo-app#readme",
   "dependencies": {
-    "@types/mongoose": "^5.11.97",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
     "http-status-codes": "^2.3.0",
-    "mongoose": "^8.12.0"
+    "mongoose": "^8.15.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.13.9",
+    "@types/node": "^22.15.21",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
