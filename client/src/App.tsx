@@ -1,15 +1,42 @@
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css'
+
 import  {
-  Dashboard,
-  AddTask
+  Login, HomeLayout, AddTask, 
+  Dashboard, AllTask
 } from './pages'
 
-function App() {
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeLayout/>,
+    children: [
+      {
+        index: true,
+        element: <Login />
+      },
+      {
+        path:'dashboard',
+        element: <Dashboard />,
+        children: [
+          {
+            index: true,
+            element: <AllTask />
+          },
+          {
+            path: 'addtask',
+            element: <AddTask />
+          }
+        ]
+      }
+    ]
+  }
+])
+
+const App = () => {
   return (
-    <>
-        <Dashboard />
-        <AddTask name='task name' description='task description' />
-    </>
+    <RouterProvider router={router}/>
   )
 }
 
