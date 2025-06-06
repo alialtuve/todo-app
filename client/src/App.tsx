@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import  {
+  Login, HomeLayout, AddTask, 
+  Dashboard, AllTask
+} from './pages'
 
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeLayout/>,
+    children: [
+      {
+        index: true,
+        element: <Login />
+      },
+      {
+        path:'dashboard',
+        element: <Dashboard />,
+        children: [
+          {
+            index: true,
+            element: <AllTask />
+          },
+          {
+            path: 'addtask',
+            element: <AddTask />
+          }
+        ]
+      }
+    ]
+  }
+])
+
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1> TO DO APP -- MERN STACK </h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <RouterProvider router={router}/>
   )
 }
 

@@ -4,5 +4,5 @@ export enum Status {
   Canceled = 'Canceled',
   OnProcess = 'On Process',
   StandBy = 'Stand By',
-  Finished = 'Finished'
+  Completed = 'Completed'
 }
