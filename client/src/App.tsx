@@ -6,6 +6,7 @@ import  {
   Dashboard, AllTask
 } from './pages'
 
+import { loader as allTaskLoader } from './pages/AllTask'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AllTask />
+            element: <AllTask />,
+            loader: allTaskLoader
           },
           {
             path: 'addtask',

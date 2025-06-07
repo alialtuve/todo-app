@@ -1,9 +1,10 @@
+import { Outlet } from "react-router-dom"
 
-function Dashboard() {
+const  Dashboard = () => {
   return (
-    <div>
-      Dashboard Pages
-    </div>
+    <>
+      <Outlet />
+    </>
   )
 }
 
