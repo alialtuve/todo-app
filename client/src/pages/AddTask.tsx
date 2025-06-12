@@ -34,7 +34,7 @@ function AddTask() {
 
   return (
     <section>
-      <h1>AddTask</h1>
+      <h3>AddTask</h3>
       <Form addTask={addTask}/>
       <TaskList tasks={tasks} toggleTask={toggleTask}/>
     </section>
