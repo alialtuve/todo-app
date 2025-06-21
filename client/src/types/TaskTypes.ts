@@ -1,12 +1,18 @@
 
-type Status = 'Active' | 'Canceled' | 'On Process' | 'Stand by' | 'Completed'
+type statusType = 'Active' | 'Canceled' | 'On Process' | 'Stand by' | 'Completed'
 
-export type Task = {
-  id: string,
+export type TaskType = {
+  _id: string,
   name: string,
   description?: string,
   comments?: string,
-  status: Status,
+  status: statusType,
   startDate?: Date,
-  endDate?: Date
+  endDate?: Date,
+  createdAt: Date
+}
+
+
+export type TaskContextType = {
+  tasks: TaskType[]
 }

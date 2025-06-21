@@ -12,20 +12,28 @@ html {
 }
 
 :root {
-  --background-color: #737a85;
+
+  --background-color: #6e7279;
+  --background-second-color: #dbf2f5;
+  --background-color002: #f1f1f7f5;
+  --background-color003: #e5eceb;
+  --background-color004: #cdd3d3;
+  --background-color005: #f8fafaf5;
+
   --nav-sidebar-color: #63e5f3;
-  --backgroun-second-color: #78c9c9;
   --nav-height: 5rem;
   --hover-color-one: #1808af;
   --transition: 0.3s ease-in-out all;
   
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1)
-  
+
+
   --letter-spacing: 1px;
   --text-color: #000108;
   --text-color02: #e8ebee;
 
   --border-radius: 0.25rem;
+
   /********* for buttoms **********/
   --register-light: #63e5f3;
   --register-dark: #35e3f7;
@@ -90,8 +98,8 @@ h5 {
 }
 
 .dashboard-content {
-  margin: 3rem 2rem;
-  display: flex;
+  margin: 2.5rem 1.75rem;
+  display: block;
   justify-content: center;
 }
 
@@ -178,13 +186,6 @@ header {
   place-items: center;
   margin-right: 0.75rem;
 }
-/***************** Task  **************************************/
-
-.task-list {
-  margin-top: 3rem;
-  display:flex;
-  justify-content: center;
-}
 
 /************************* Logo  ******************************/
 .logo{
@@ -207,4 +208,31 @@ header {
   transition: var(--transition);
   text-transform: capitalize;
   display: inline-block;
+}
+
+/***************** Form styles *********************************/
+.form{
+  width:90vh;
+}
+.form-label {
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing);
+  line-height: 1;
+  margin-right: 0.5rem;
+}
+.form-input,
+.form-select {
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--border-radius);
+  background: var(--background-color005);
+  border: 1px solid var(--background-color);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.form-input,
+.form-select,
+.form-btn {
+  height: 30px;
 }
