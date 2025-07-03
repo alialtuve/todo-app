@@ -1,22 +1,50 @@
 import React, {  useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import baseUrl from "../utils/baseUrl"
 import { TasksContainer, TaskSearchContainer } from "../components";
 import { type TaskContextType } from '../types/TaskTypes'
 
-export const loader = async() => {
-  const { data } = await baseUrl.get('/task')
-  return data
+
+export const loader = async({request}: LoaderFunctionArgs)  =>  {
+
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ])
+  
+  try {
+    const { data } = await baseUrl.get('/task', {
+      params
+    })
+    
+    return { data, searchValues: {...params}}
+
+  } catch(error) {
+    return error
+  }
 }
 
-const AllTaskContext = React.createContext<TaskContextType>({tasks:[]})
+const TaskContextInitValues = {
+  data : {
+    tasks :[],
+    totalTasks: 0,
+    numOfPages: 0,
+    currentPage:0,
+  },
+  searchValues: {
+    name: '',
+    status: '',
+    sort: ''
+  }
+}
+
+const AllTaskContext = React.createContext<TaskContextType>(TaskContextInitValues)
 
 const  AllTask = () => {
-  const data = useLoaderData()
-  const {tasks}= data
+
+  const {data, searchValues} = useLoaderData()
   
   return (
-    <AllTaskContext.Provider value={{tasks}}>
+    <AllTaskContext.Provider value={{data, searchValues}}>
       <TaskSearchContainer />
       <TasksContainer />
     </AllTaskContext.Provider>

@@ -1,5 +1,5 @@
 
-type statusType = 'Active' | 'Canceled' | 'On Process' | 'Stand by' | 'Completed'
+export type statusType = 'Active' | 'Canceled' | 'On Process' | 'Stand by' | 'Completed'
 
 export type TaskType = {
   _id: string,
@@ -14,5 +14,19 @@ export type TaskType = {
 
 
 export type TaskContextType = {
-  tasks: TaskType[]
+  data : data,
+  searchValues: searchValues
+}
+
+type searchValues = {
+  name: string,
+  status: string,
+  sort: string
+}
+
+type data = {
+  tasks: TaskType[],
+  totalTasks: number,
+  numOfPages: number,
+  currentPage: number,
 }

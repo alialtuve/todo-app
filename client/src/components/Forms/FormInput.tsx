@@ -6,8 +6,9 @@ const FormInput = ({type, name, labelText, defaultValue, onChange}:any) => {
         {labelText || name}
       </label>
       <input 
-        type={type}
         id={name}
+        name={name}
+        type={type}
         className="form-input"
         defaultValue={defaultValue}
         onChange={onChange}

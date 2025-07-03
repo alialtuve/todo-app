@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     margin: 0;
     display: grid;
     row-gap: 1rem;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .form-row{
     margin-left: 1rem;
@@ -32,6 +32,21 @@ const Wrapper = styled.div`
   }
   .form-label{
     width:30%;
+  }
+
+  .btn-reset {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bolder;
+    color: var(--text-color02);
+    align-self: end;
+    background-color: var(--warning-dark);
+    width: 70%;
+  }
+  .btn-reset:hover {
+    background-color: var(--warning-light);
+    color: var(--text-color04);
+    box-shadow: var(--shadow-1);
   }
 `
 

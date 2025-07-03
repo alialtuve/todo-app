@@ -1,5 +1,6 @@
 
-const FormSelect = ({ name, labelText, defaultValue, onChange}: any) => {
+const FormSelect = ({ name, labelText, list, defaultValue, onChange}: any) => {
+  
   return (
     <div className="form-row">
       <label htmlFor="taskStatus" className="form-label">
@@ -12,15 +13,24 @@ const FormSelect = ({ name, labelText, defaultValue, onChange}: any) => {
         defaultValue={defaultValue || ''}
         onChange={onChange}
         required
-      >
-        return(
-          <option 
-            key={'1'}
-            value={'option one'}
-          >
-            {'option one'}
-          </option>
-        )
+        >
+        {
+          list && list.length > 0 ? (
+            list.map((item:any)=>{
+              return (
+                <option 
+                  key={item}   
+                  value={item}
+                >
+                  {item}
+                </option>
+                ) 
+                })
+          ) : (
+            <option> Loading options ...</option>
+          )
+        }
+        
       </select>
     </div>
   )

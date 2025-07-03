@@ -31,6 +31,8 @@ html {
   --letter-spacing: 1px;
   --text-color: #000108;
   --text-color02: #e8ebee;
+  --text-color03: #b9bfc5;
+  --text-color04: #81888f;
 
   --border-radius: 0.25rem;
 
@@ -45,6 +47,7 @@ html {
   --delete-dark: #c72609;
   --warning-light: #f8e64a;
   --warning-dark:#d8c309; 
+
 }
 
 
