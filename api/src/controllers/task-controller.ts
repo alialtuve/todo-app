@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from 'express'
 import TaskModel from '../models/task-model'
 import { StatusCodes } from 'http-status-codes'
 import { BadRequestErr } from '../errors/bad-request'
+import { IQuery} from '../interfaces/task-interface'
+import { Status, TASK_SORT_OPTIONS} from '../enums/task-status'
 
 
 export const createTask = async (req: Request, res: Response, next: NextFunction ) => {
@@ -18,8 +20,38 @@ export const createTask = async (req: Request, res: Response, next: NextFunction
 }
 
 export const getAllTasks = async (req: Request, res: Response) => {
-  const tasks = await TaskModel.find()
-  res.status(StatusCodes.OK).json({tasks})
+
+  const { name, status, sort } = req.query as IQuery
+  
+  // Search and Sort 
+  let regExp:IQuery = {}
+  
+  if(name) regExp.name = new RegExp(name, 'i') 
+
+  if(!status){
+    regExp.status = Status.Active    
+  } else {
+    regExp.status = status
+  }
+
+  // SORT  
+  const sortKey = sort? TASK_SORT_OPTIONS[sort] : TASK_SORT_OPTIONS.newest 
+
+  // Calculating pagination              
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 12;
+  const skip = (page -1) * limit
+
+
+  const totalTasks = await TaskModel.countDocuments(regExp)
+  const numOfPages = Math.ceil(totalTasks / limit)
+
+  const tasks = await TaskModel.find(regExp)
+                      .sort(sortKey)
+                      .skip(skip)
+                      .limit(limit)
+
+  res.status(StatusCodes.OK).json({tasks, totalTasks, numOfPages, currentPage: page})
 }
 
 export const getTask = async (req: Request, res: Response, next: NextFunction ) => {

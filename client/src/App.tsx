@@ -1,20 +1,26 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import './App.css'
 
 import  {
-  Login, HomeLayout, AddTask, 
-  Dashboard, AllTask
+  Login, HomeLayout, AddTask, Stats,
+  Dashboard, AllTask, Error, Profile,
+  Register
 } from './pages'
 
+import { loader as allTaskLoader } from './pages/AllTask'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout/>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
         element: <Login />
+      },
+      {
+        path: 'register',
+        element: <Register />
       },
       {
         path:'dashboard',
@@ -22,14 +28,23 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AllTask />
+            element: <AllTask />,
+            loader: allTaskLoader
           },
           {
             path: 'addtask',
             element: <AddTask />
+          },
+          {
+            path: 'stats',
+            element: <Stats />
+          },
+          {
+            path: 'profile',
+            element: <Profile />
           }
         ]
-      }
+      },
     ]
   }
 ])
