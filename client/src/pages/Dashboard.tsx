@@ -3,15 +3,15 @@ import { Navbar, Sidebar } from "../components"
 
 const  Dashboard = () => {
   return (
-    <main className="main">
-        <Sidebar />
-        <div className="dashboard">
-          <Navbar />
-          <div className="dashboard-content">
-            <Outlet />
-          </div>
-        </div>
-    </main>
+    <section>
+      <main className="main">
+            <Sidebar />
+            <Navbar />
+            <div className="dashboard-content">
+              <Outlet />
+            </div>
+      </main>
+    </section>
   )
 }
 

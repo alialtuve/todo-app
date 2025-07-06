@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
+  width: 95%;
   margin-top: 1.25rem;
   .tasks {
     display: grid;
@@ -15,6 +16,7 @@ const Wrapper = styled.section`
   }
   .task-amount{
     color: #fcf9f9;
+    font-size: 0.85rem;
   }
 `
 

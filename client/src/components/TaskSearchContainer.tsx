@@ -59,9 +59,11 @@ const TaskSearchContainer = () => {
               submit(e.currentTarget.form)
             }}
           />
-          <Link to='/dashboard' className='btn btn-reset'>
-            Reset Values
-          </Link>
+          <div className='form-row'>
+            <Link to='/dashboard' className='btn btn-reset'>
+              Reset Values
+            </Link>
+          </div>
         </div>
       </Form>
     </Wrapper>

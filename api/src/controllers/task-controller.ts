@@ -20,15 +20,13 @@ export const createTask = async (req: Request, res: Response, next: NextFunction
 }
 
 export const getAllTasks = async (req: Request, res: Response) => {
-  
+
   const { name, status, sort } = req.query as IQuery
   
   // Search and Sort 
   let regExp:IQuery = {}
   
   if(name) regExp.name = new RegExp(name, 'i') 
-
-  console.log('regExp', regExp)
 
   if(!status){
     regExp.status = Status.Active    
@@ -44,7 +42,7 @@ export const getAllTasks = async (req: Request, res: Response) => {
   const limit = Number(req.query.limit) || 12;
   const skip = (page -1) * limit
 
-  
+
   const totalTasks = await TaskModel.countDocuments(regExp)
   const numOfPages = Math.ceil(totalTasks / limit)
 

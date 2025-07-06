@@ -1,18 +1,17 @@
 import NavLinks from "./NavLinks"
 import Logo from './Logo'
+import Wrapper from "../assets/wrappers/SideBarWrap"
 
 const Sidebar = () => {
   return (
-    <div className="sidebar-wrapper">
-      <div className="sidebar">
-        <div className="sidebar-content">
-          <header className="header"> 
-            <Logo />
-          </header> 
-          <NavLinks />
-        </div>
+    <Wrapper>
+      <div className="sidebar-container">
+            <header className="header"> 
+              <Logo />
+            </header> 
+            <NavLinks />
       </div>
-    </div>
+    </Wrapper>
   )
 }
 

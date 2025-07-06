@@ -57,6 +57,7 @@ body {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 400;
   line-height: 1.3;
+  position: relative;
 }
 
 h1,
@@ -92,18 +93,29 @@ h5 {
 }
 
 .main {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-
-.dashboard {
-  width: 100%;
+  display: block;
 }
 
 .dashboard-content {
-  margin: 2.5rem 1.75rem;
-  display: block;
-  justify-content: center;
+  width: 85%;
+  margin: 0 225px;
+  padding: 3rem 0;
+}
+
+@media (min-width: 891px) and (max-width:1310px) {
+  .dashboard-content {
+    width: 80vw;
+    margin: 0 225px;
+    padding: 5rem 0;
+  }
+}
+  
+  @media (min-width: 640px) and (max-width:890px) {
+  .dashboard-content {
+    width: 60vw;
+    margin: 0 0 0 220px;
+    padding: 3rem 0;
+  }
 }
 
 /********************** nav bar styles *******************/
@@ -111,7 +123,7 @@ h5 {
   display: flex;
   height: var(--nav-height);
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   background: var(--nav-sidebar-color);
   position: static;
   top: 0;
@@ -119,7 +131,7 @@ h5 {
 
 .navbar-content {
   display: inline-flex;
-  width: 100%;
+  width: 70%;
   align-items: center;
   justify-content:end;
   margin: 0.75rem 1rem 0.75rem 0rem;
@@ -130,65 +142,9 @@ h5 {
   }
 }
 .navbar-text {
-  width: 10%;
+  width: 7rem;
 }
 
-/********************* side bar styles ***************************/
-.sidebar-wrapper {
-  margin: auto;
-  display: block;
-}
-
-.sidebar {
-  background: var(--nav-sidebar-color);
-  width: 200px;
-  height: 100vh;
-}
-
-.sidebar-content {
-  position: sticky;
-  top: 0;
-}
-
-header {
-  height: 6rem;
-  display: flex;
-  align-items: center;
-  padding: 2.5rem;
-  font-size: clamp(2rem, 1vw, 1rem);
-}
-
-/**************** Nav links styles   ************************/
-.nav-links {
-  padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.75rem;
-  text-transform: capitalize;
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: large
-}
-
-.nav-link:hover {
-  padding-left: 1.25rem;
-  color: var(--hover-color-one) ;
-  transition: var(--transition);
-  background-color: var(--background-color);
-  border: 1px solid var(--background-color);
-  border-radius: 5px 5px 5px 5px ;
-}
-
-.icon {
-  font-size: 1.5rem;
-  place-items: center;
-  margin-right: 0.75rem;
-}
 
 /************************* Logo  ******************************/
 .logo{
