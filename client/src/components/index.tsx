@@ -1,4 +1,5 @@
- export { default as TaskList } from './TaskList'
+ export { default as TasksContainer } from './TasksContainer'
+ export { default as TaskSearchContainer } from './TaskSearchContainer'
  export { default as Task } from './Task'
- export { default as Form } from './TaskForm'
- 
+ export { default as Navbar } from './Navbar'
+ export { default as Sidebar } from './Sidebar'

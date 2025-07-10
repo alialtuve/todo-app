@@ -1,3 +1,4 @@
+import { Status } from "enums/task-status";
 import { Document } from "mongoose"; 
 
 export  interface ITask {
@@ -10,3 +11,13 @@ export  interface ITask {
 }
 
 export interface ITaskModel extends ITask, Document {}
+
+export interface IQuery  {
+    name?:string | RegExp ;
+    status?: Status | RegExp;
+    sort?: string
+}
+
+export interface ITaskSort {
+  [key : string]: string,
+}
