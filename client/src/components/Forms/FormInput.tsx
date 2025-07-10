@@ -1,5 +1,13 @@
 
-const FormInput = ({type, name, labelText, defaultValue, onChange}:any) => {
+type inputType = {
+  type: string,
+  name: string,
+  labelText: string,
+  defaultValue: string,
+  onChange?: any
+}
+
+const FormInput = ({type, name, labelText, defaultValue, onChange}: inputType) => {
   return (
     <div className="form-row">
       <label htmlFor="{name}" className="form-label">

@@ -73,20 +73,6 @@ const Wrapper = styled.div`
     width:40%;
   }
 
-  .btn-reset {
-    text-decoration: none;
-    text-align: center;
-    font-weight: bolder;
-    color: var(--text-color02);
-    background-color: var(--warning-dark);
-    width: 90%;
-  }
-  .btn-reset:hover {
-    background-color: var(--warning-light);
-    color: var(--text-color04);
-    box-shadow: var(--shadow-1);
-  }
-
 `
 
 export default Wrapper

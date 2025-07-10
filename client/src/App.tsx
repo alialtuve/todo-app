@@ -7,6 +7,7 @@ import  {
 } from './pages'
 
 import { loader as allTaskLoader } from './pages/AllTask'
+import { action as addTaskAction } from './pages/AddTask'
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'addtask',
-            element: <AddTask />
+            element: <AddTask />,
+            action: addTaskAction
           },
           {
             path: 'stats',
