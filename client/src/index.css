@@ -155,7 +155,9 @@ h5 {
   height: auto;
 }
 
-/****************  Buttom styles  *****************************/
+/*Buttons styles  *********************************************/
+/**************************************************************/
+
 .btn {
   cursor: pointer;
   color: var(--text-color);
@@ -169,7 +171,38 @@ h5 {
   display: inline-block;
 }
 
-/***************** Form styles *********************************/
+.btn-reset {
+  text-decoration: none;
+  text-align: center;
+  font-weight: bolder;
+  color: var(--text-color02);
+  background-color: var(--warning-dark);
+  width: 90%;
+}
+
+.btn-reset:hover {
+  background-color: var(--warning-light);
+  color: var(--text-color);
+  box-shadow: var(--shadow-1);
+}
+
+.btn-submit {
+  text-decoration: none;
+  text-align: center;
+  font-weight: bolder;
+  color: var(--text-color02);
+  background-color: var(--create-dark);
+}
+
+.btn-submit:hover {
+  background-color: var(--create-light);
+  color: var(--text-color);
+  box-shadow: var(--shadow-1);
+}
+
+/***************************************************************************/
+/* Form styles *************************************************************/
+
 .form{
   width:90vh;
 }

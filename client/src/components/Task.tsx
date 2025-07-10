@@ -1,6 +1,6 @@
 import { TaskType } from "../types/TaskTypes"
 import TaskHeader from './TaskHeader'
-import Wrapper from '../assets/wrappers/TaskWrap'
+import Wrapper from '../assets/wrappers/TaskListWrap'
 
 const Task = ({ name, description,  status}: TaskType) => {
   

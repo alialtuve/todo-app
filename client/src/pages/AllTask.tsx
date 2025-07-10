@@ -15,9 +15,7 @@ export const loader = async({request}: LoaderFunctionArgs)  =>  {
     const { data } = await baseUrl.get('/task', {
       params
     })
-    
     return { data, searchValues: {...params}}
-
   } catch(error) {
     return error
   }
