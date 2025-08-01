@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import { createContext, useContext } from "react";
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import baseUrl from "../utils/baseUrl"
 import { TasksContainer, TaskSearchContainer } from "../components";
@@ -35,7 +35,7 @@ const TaskContextInitValues = {
   }
 }
 
-const AllTaskContext = React.createContext<TaskContextType>(TaskContextInitValues)
+const AllTaskContext = createContext<TaskContextType>(TaskContextInitValues)
 
 const  AllTask = () => {
 

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { Status } from '../enums/task-status'
 import { ITaskModel } from '../interfaces/task-interface'
 
@@ -23,6 +23,10 @@ const TaskSchema = new Schema({
     },
     endDate: {
       type: Date
+    },
+    createdBy:{
+      type:Types.ObjectId,
+      ref:'User'
     }
   }, { timestamps: true, versionKey: false }
 )
