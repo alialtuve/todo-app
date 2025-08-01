@@ -6,8 +6,11 @@ import  {
   Register
 } from './pages'
 
+import { loader as dashboardLoader } from './pages/Dashboard'
 import { loader as allTaskLoader } from './pages/AllTask'
 import { action as addTaskAction } from './pages/AddTask'
+import { action as registerAction } from  './pages/Register'
+import { action as loginAction } from './pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -17,15 +20,18 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />
+        element: <Login />,
+        action: loginAction
       },
       {
         path: 'register',
-        element: <Register />
+        element: <Register />,
+        action: registerAction
       },
       {
         path:'dashboard',
         element: <Dashboard />,
+        loader: dashboardLoader,
         children: [
           {
             index: true,

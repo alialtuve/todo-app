@@ -37,8 +37,8 @@ html {
   --border-radius: 0.25rem;
 
   /********* for buttoms **********/
-  --register-light: #63e5f3;
-  --register-dark: #35e3f7;
+  --register-light: #4037b6;
+  --register-dark: #160abb;
   --cancel-light: #9ba2ac;
   --cancel-dark: #49525f;
   --create-light: #72d612;
@@ -47,7 +47,6 @@ html {
   --delete-dark: #c72609;
   --warning-light: #f8e64a;
   --warning-dark:#d8c309; 
-
 }
 
 
@@ -196,6 +195,21 @@ h5 {
 
 .btn-submit:hover {
   background-color: var(--create-light);
+  color: var(--text-color);
+  box-shadow: var(--shadow-1);
+}
+
+
+.btn-register {
+  text-decoration: none;
+  text-align: center;
+  font-weight: bolder;
+  color: var(--text-color02);
+  background-color: var(--register-dark);
+}
+
+.btn-register:hover {
+  background-color: var(--register-light);
   color: var(--text-color);
   box-shadow: var(--shadow-1);
 }

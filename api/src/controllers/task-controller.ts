@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import TaskModel from '../models/task-model'
 import { StatusCodes } from 'http-status-codes'
-import { BadRequestErr } from '../errors/bad-request'
-import { IQuery} from '../interfaces/task-interface'
+import { BadRequestErr } from '../errors/custom-errors'
+import { IQuery, TypeQuery} from '../interfaces/task-interface'
 import { Status, TASK_SORT_OPTIONS} from '../enums/task-status'
 
 
@@ -11,6 +11,8 @@ export const createTask = async (req: Request, res: Response, next: NextFunction
     name,
     description
   } = req.body
+  
+   req.body.createdBy = req.user._id
 
    if(name ==='' || description === ''){
      next (new BadRequestErr ('Fields name and description are required'))
@@ -23,16 +25,20 @@ export const getAllTasks = async (req: Request, res: Response) => {
 
   const { name, status, sort } = req.query as IQuery
   
+
   // Search and Sort 
-  let regExp:IQuery = {}
-  
-  if(name) regExp.name = new RegExp(name, 'i') 
+  let regExp:TypeQuery = {
+    createdBy : req.user._id
+  }
+
+  if(name) regExp.name = new RegExp(name, 'i')
 
   if(!status){
     regExp.status = Status.Active    
   } else {
     regExp.status = status
   }
+
 
   // SORT  
   const sortKey = sort? TASK_SORT_OPTIONS[sort] : TASK_SORT_OPTIONS.newest 
@@ -55,18 +61,26 @@ export const getAllTasks = async (req: Request, res: Response) => {
 }
 
 export const getTask = async (req: Request, res: Response, next: NextFunction ) => {
+
+  const  userId = req.user._id
   const taskId = req.params.id
-  const task = await TaskModel.findById({ _id:taskId })
+  const task = await TaskModel.findOne({ _id:taskId, createdBy:userId })
   res.status(StatusCodes.OK).json({task})
 }
 
 export const updateTask = async (req: Request, res: Response ) => {
+  
+  const  userId = req.user._id
   const {
     body,
     params: {id:taskId},
   } = req
-  const task = await TaskModel.findByIdAndUpdate(
-    { _id: taskId },
+
+  const task = await TaskModel.findOneAndUpdate(
+    { 
+      _id: taskId,
+      createdBy: userId
+    },
     body,
     { new:true, runValidators: true }
   )
@@ -74,7 +88,13 @@ export const updateTask = async (req: Request, res: Response ) => {
 }
 
 export const deleteTask = async(req: Request, res:Response ) => {
+  
+  const  userId = req.user._id
   const taskId = req.params.id
-  const task = await TaskModel.findOneAndDelete({ _id:taskId})
-  res.status(StatusCodes.OK).json({msg: 'task deleted', task})
+  let msg = 'task deleted'
+  const task = await TaskModel.findOneAndDelete({ _id:taskId, createdBy: userId})
+  if(task === null){
+    msg = 'Any task was deleted'
+  }
+  res.status(StatusCodes.OK).json({msg})
 }

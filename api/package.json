@@ -20,14 +20,19 @@
   },
   "homepage": "https://github.com/alialtuve/todo-app#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-async-errors": "^3.1.1",
+    "express-validator": "^7.0.1",
     "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.15.21",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
