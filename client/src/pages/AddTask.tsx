@@ -18,7 +18,6 @@ export const action = async({request}: LoaderFunctionArgs)  =>  {
 }
 
 function AddTask() {
-
   return (
     <Wrapper>
      <h4 className="form-title">AddTask</h4>

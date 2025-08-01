@@ -1,24 +1,30 @@
+import dotenv from 'dotenv'
 import 'express-async-errors'
 import express from 'express';
 import {client} from './config/db-config'
+
+dotenv.config()
 
 const { PORT } = process.env;
 const app = express()
 
 // Router
 import  taskRouter from './routes/task-route'
+import { authRouter, userRouter } from './routes/user-route';
 
 // error handler
 import routeNotFound from './middleware/route-not-found'
-import { errorHandler } from './middleware/error-handler';
+import { authenticate } from './middleware/auth';
 
 app.use(express.json())
 
 // routes
-app.use('/api/v1/task', taskRouter)
+app.use('/api/v1/task', authenticate, taskRouter)
+app.use('/api/v1/user', authenticate, userRouter)
+app.use('/api/v1/auth', authRouter)
+
 
 app.use(routeNotFound)
-app.use(errorHandler)
 
 async function start() {
   try {
