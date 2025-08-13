@@ -12,11 +12,14 @@ const Wrapper = styled.article`
     font-weight: bold;
   }
   .main-actions{
+    display: flex;
     margin-top: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
-  .actions {
-    margin-right: 1.5rem;
+  .btn-text {
+    margin-left: 0.25rem;
+    font-size: smaller;
+    font-weight: bolder;
   }
   .task-status{
     color: #1b47eb;
