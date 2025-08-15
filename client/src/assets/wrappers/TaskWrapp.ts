@@ -36,7 +36,8 @@ const Wrapper = styled.div`
       .btn-submit {
         width: 25%;
       }
-      .form-input {
+      .form-input 
+      .form-select{
         width: 100%;
       }
     }
@@ -50,6 +51,10 @@ const Wrapper = styled.div`
 
   .form-label{
     width:100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .btn-submit{

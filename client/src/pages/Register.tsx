@@ -1,9 +1,11 @@
 import { Form, Link, LoaderFunctionArgs, redirect } from 'react-router-dom'
+import { isAxiosError } from 'axios'
 import Wrapper from '../assets/wrappers/RegisLginWrapp'
 import FormInput from '../components/Forms/FormInput'
 import Logo from '../components/Logo'
 import todoText from '../assets/images/todo-text.png'
 import baseUrl from '../utils/baseUrl'
+import { toast } from 'react-toastify'
 
 export const action = async({request}: LoaderFunctionArgs)  =>  {
   const formData = await request.formData()
@@ -13,6 +15,9 @@ export const action = async({request}: LoaderFunctionArgs)  =>  {
     return redirect('/')
 
   } catch(error) {
+      if(isAxiosError(error) && error.response){
+          toast.error(error.response.data.error)
+      }
     return error
   }
 }

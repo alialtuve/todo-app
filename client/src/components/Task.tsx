@@ -1,8 +1,11 @@
+import { Form, Link } from "react-router-dom"
+import { FaPencilAlt } from "react-icons/fa"
+import { RiDeleteBin2Fill } from "react-icons/ri"
+import Wrapper from '../assets/wrappers/TaskListWrap'
 import { TaskType } from "../types/TaskTypes"
 import TaskHeader from './TaskHeader'
-import Wrapper from '../assets/wrappers/TaskListWrap'
 
-const Task = ({ name, description,  status}: TaskType) => {
+const Task = ({ _id, name, description,  status}: TaskType) => {
   
   return (
     <Wrapper>
@@ -16,11 +19,18 @@ const Task = ({ name, description,  status}: TaskType) => {
           <span className='title-content'>{'Status: '}</span>
           <span className="task-status">{status}</span>
         </p>
-        <p className="main-actions" >
-          <span className='actions'>{'Status'}</span>
-          <span className='actions'>{'Edit'}</span>
-          <span className='actions'>{'Delete'}</span>
-        </p>
+        <footer className="main-actions" >
+          <Link to={`/dashboard/edit-task/${_id}`} className="btn btn-edit ">
+            <FaPencilAlt />
+            <span className="btn-text">Edit</span>
+          </Link>
+          <Form method="post" action={`/dashboard/delete-task/${_id}`}>
+            <button type="submit" className="btn btn-delete">
+              <RiDeleteBin2Fill />
+              <span className="btn-text"> Delete </span>
+            </button>
+          </Form>
+        </footer>
       </div>
     </Wrapper>
   )

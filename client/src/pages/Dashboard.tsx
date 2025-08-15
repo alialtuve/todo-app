@@ -1,9 +1,10 @@
 import {  createContext, useContext } from "react";
-import { Outlet, redirect } from "react-router-dom"
+import { Outlet, redirect, useNavigate } from "react-router-dom"
 import { Navbar, Sidebar } from "../components"
 import baseUrl from "../utils/baseUrl"
 import { useLoaderData } from "react-router-dom";
-import {type UserInfoType} from '../types/UserTypes'
+import { IContextUser, IUserInfo } from '../types/UserTypes'
+import { toast } from "react-toastify";
 
 
 export const loader = async()  =>  {
@@ -15,24 +16,40 @@ export const loader = async()  =>  {
   }
 }
 
-const UserInitValues = {
-  name:'',
-  email:''
+const UserInitValues:IContextUser = {
+  user : {
+    name:'',
+    email:''
+  },
+  logoutUser: () => ''
 }
 
-const DashboardContext = createContext<UserInfoType>(UserInitValues)
+const DashboardContext = createContext<IContextUser>(UserInitValues)
 
 const  Dashboard = () => {
-  const user = useLoaderData()
+
+  const user: IUserInfo = useLoaderData()
+  const navigate = useNavigate()
+
+  const logoutUser = async () => {
+    navigate('/')
+    await baseUrl.get('/auth/logout')
+    toast.success('Loggin out...')
+  }
   
   return (
-    <DashboardContext.Provider value={user}>
+    <DashboardContext.Provider 
+      value={{
+        user,
+        logoutUser
+      }} 
+    >
       <section>
         <main className="main">
               <Sidebar />
               <Navbar />
               <div className="dashboard-content">
-                <Outlet />
+                <Outlet context={user}/>
               </div>
         </main>
       </section>

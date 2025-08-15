@@ -30,7 +30,14 @@ export const login = async (req:Request, res:Response) => {
     httpOnly:true,
     expires:new Date(Date.now() + cookieDuration),
     secure:process.env.NODE_ENV === 'development'
-  });
-  res.send(token)
-  //res.status(StatusCodes.OK).json({msg:'User logged'})
+  })
+  res.status(StatusCodes.OK).json({msg:'User logged'})
+}
+
+export const logout = async (req:Request, res:Response) => {
+  res.cookie('token', logout, {
+    httpOnly:true,
+    expires:new Date(Date.now()),
+  })
+  res.status(StatusCodes.OK).json({msg:'User logged'})
 }

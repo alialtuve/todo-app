@@ -3,16 +3,21 @@ import FormInput from "../components/Forms/FormInput"
 import Wrapper from "../assets/wrappers/TaskWrapp"
 import { BtnSubmit } from "../components/Forms/BtnSubmit"
 import baseUrl from "../utils/baseUrl"
+import { isAxiosError } from "axios"
+import { toast } from "react-toastify"
 
 
 export const action = async({request}: LoaderFunctionArgs)  =>  {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
   try {
-    await baseUrl.post('/task', data)    
+    await baseUrl.post('/task', data)
+    toast.success('New task created successfully!')
     return redirect('/dashboard')
-
   } catch(error) {
+    if(isAxiosError(error) && error.response){
+      toast.error(error.response.data.error)
+    }
     return error
   }
 }
