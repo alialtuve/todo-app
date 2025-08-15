@@ -214,6 +214,47 @@ h5 {
   box-shadow: var(--shadow-1);
 }
 
+.btn-cancel {
+  text-decoration: none;
+  text-align: center;
+  font-weight: bolder;
+  color: var(--text-color02);
+  background-color: var(--cancel-dark);
+}
+
+.btn-cancel:hover {
+  color: var(--text-color);
+  background-color: var(--cancel-light);
+}
+
+.btn-logout {
+  font-size: 1.50rem;
+  margin: 0.75rem;
+  padding-top: 0.25rem;
+  color: var(--background-color);
+  background-color: var(--nav-sidebar-color);
+  border: transparent;
+  cursor: pointer;
+}
+
+.btn-delete {
+  font-size: 1.25rem;
+  margin: 0.75rem;
+  color: var(--background-color003);
+  background-color: var(--delete-dark);
+  border: transparent;
+  cursor: pointer;
+}
+
+.btn-edit {
+  font-size: 1.25rem;
+  margin: 0.75rem;
+  color: var(--background-color003);
+  background-color: var(--create-dark);
+  border: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
 /***************************************************************************/
 /* Form styles *************************************************************/
 

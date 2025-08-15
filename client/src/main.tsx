@@ -7,6 +7,6 @@ import './index.css'
 createRoot(document.getElementById('root')!).render(
   <>
     <App />
-    <ToastContainer position='top-center' autoClose={3000}/>
+    <ToastContainer position='top-center' autoClose={2000}/>
   </>,
 )

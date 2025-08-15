@@ -1,9 +1,10 @@
-import { FaPowerOff, FaUserAlt } from "react-icons/fa"
+import { FaUserAlt } from "react-icons/fa"
 import todoText from '../assets/images/todo-text.png'
 import { useDashboardContext } from '../pages/Dashboard'
+import Logout from '../components/Logout'
 
 const Navbar = () => {
-  const user = useDashboardContext()
+  const { user } = useDashboardContext()
   
   return (
     <div className="navbar">
@@ -15,9 +16,7 @@ const Navbar = () => {
           </span>
           {user.name}
         </p>
-        <span className='navbar-icon'>
-          <FaPowerOff />
-        </span>
+        <Logout />
       </div>
     </div>
   )

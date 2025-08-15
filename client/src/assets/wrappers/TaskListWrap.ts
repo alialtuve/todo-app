@@ -12,12 +12,23 @@ const Wrapper = styled.article`
     font-weight: bold;
   }
   .main-actions{
+    display: flex;
     margin-top: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
-  .actions {
-    margin-right: 1.5rem;
+
+  .btn-text {
+    margin-left: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: bolder;
   }
+
+  @media (min-width: 1120px) {
+    .btn-text {
+      display: none;
+    }
+  }
+
   .task-status{
     color: #1b47eb;
     font-weight: bold;

@@ -10,9 +10,14 @@ const Wrapper = styled.div`
   background-color: var(--background-color004);
   color: #1b47eb;
   .header {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     margin-right: 0.75rem;
     font-weight: bolder;
+  }
+  @media (min-width: 1120px) {
+    .header {
+      font-size: 1rem;
+    }
   }
   .header-icon {
     font-size: 1.5rem;

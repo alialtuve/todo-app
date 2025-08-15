@@ -3,6 +3,8 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import baseUrl from "../utils/baseUrl"
 import { TasksContainer, TaskSearchContainer } from "../components";
 import { type TaskContextType } from '../types/TaskTypes'
+import { isAxiosError } from "axios";
+import { toast } from "react-toastify";
 
 
 export const loader = async({request}: LoaderFunctionArgs)  =>  {
@@ -17,6 +19,9 @@ export const loader = async({request}: LoaderFunctionArgs)  =>  {
     })
     return { data, searchValues: {...params}}
   } catch(error) {
+      if(isAxiosError(error) && error.response){
+        toast.error(error.response.data.error)
+      }
     return error
   }
 }
