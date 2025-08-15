@@ -16,11 +16,19 @@ const Wrapper = styled.article`
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
+
   .btn-text {
     margin-left: 0.25rem;
-    font-size: smaller;
+    font-size: 0.95rem;
     font-weight: bolder;
   }
+
+  @media (min-width: 1120px) {
+    .btn-text {
+      display: none;
+    }
+  }
+
   .task-status{
     color: #1b47eb;
     font-weight: bold;
