@@ -9,6 +9,7 @@ import  {
 import { loader as dashboardLoader } from './pages/Dashboard'
 import { loader as allTaskLoader } from './pages/AllTask'
 import { loader as taskLoader } from './pages/EditTask'
+import { loader as statsLoader } from './pages/Stats'
 import { action as addTaskAction } from './pages/AddTask'
 import { action as registerAction } from  './pages/Register'
 import { action as loginAction } from './pages/Login'
@@ -48,7 +49,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'stats',
-            element: <Stats />
+            element: <Stats />,
+            loader: statsLoader
           },
           {
             path: 'profile',

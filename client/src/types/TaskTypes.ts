@@ -1,5 +1,5 @@
 
-export type statusType = 'Active' | 'Canceled' | 'On Process' | 'Stand by' | 'Completed'
+export type statusType = 'Active' | 'Canceled' | 'On Process' | 'Stand By' | 'Completed'
 
 export type TaskType = {
   _id: string,
@@ -29,4 +29,14 @@ type data = {
   totalTasks: number,
   numOfPages: number,
   currentPage: number,
+}
+
+export interface IStat {
+    _id: statusType,
+    count: number
+  }
+
+export type statsType = {
+  data: IStat[],
+  month: string
 }

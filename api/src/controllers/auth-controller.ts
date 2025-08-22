@@ -31,7 +31,8 @@ export const login = async (req:Request, res:Response) => {
     expires:new Date(Date.now() + cookieDuration),
     secure:process.env.NODE_ENV === 'development'
   })
-  res.status(StatusCodes.OK).json({msg:'User logged'})
+  res.json(token)
+  //res.status(StatusCodes.OK).json({msg:'User logged'})
 }
 
 export const logout = async (req:Request, res:Response) => {

@@ -53,8 +53,11 @@
     ``` docker-compose up --build ```
 
 ## API
-  * GET v1/api/task/: List of tasks.
-  * POST v1/api/task/: Create a new task.
-  * GET v1/api/task/:id: Get task detail.
-  * PUT v1/api/task/:id: Update task data.
-  * DELETE v1/api/tast/:id: Delete task.
+  * GET v1/api/task/ List of tasks.
+  * POST v1/api/task/ Create a new task.
+  * GET v1/api/task/:id Get task detail.
+  * PUT v1/api/task/:id Update task data.
+  * DELETE v1/api/task/:id Delete task.
+  * GET v1/api/task/ Monthly summary of task grouped by status.
+  * POST v1/api/auth/register Register.
+  * POST v1/api/auth/login Login

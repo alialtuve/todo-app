@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes'
 import { BadRequestErr } from '../errors/custom-errors'
 import { IQuery, TypeQuery} from '../interfaces/task-interface'
 import { Status, TASK_SORT_OPTIONS} from '../enums/task-status'
-
+import mongoose from 'mongoose'
 
 export const createTask = async (req: Request, res: Response, next: NextFunction ) => {
   const {
@@ -60,7 +60,7 @@ export const getAllTasks = async (req: Request, res: Response) => {
   res.status(StatusCodes.OK).json({tasks, totalTasks, numOfPages, currentPage: page})
 }
 
-export const getTask = async (req: Request, res: Response, next: NextFunction ) => {
+export const getTask = async (req: Request, res: Response ) => {
 
   const  userId = req.user._id
   const taskId = req.params.id
@@ -97,4 +97,24 @@ export const deleteTask = async(req: Request, res:Response ) => {
     msg = 'Any task was deleted'
   }
   res.status(StatusCodes.OK).json({msg})
+}
+
+export const getTaskStats = async (req: Request, res: Response ) => {
+
+  let month:number = parseInt (req.query.month as string)
+  
+  const  userId = new mongoose.Types.ObjectId(req.user._id)
+
+  if(!month) {
+    const currentDate = new Date()
+    month = currentDate.getMonth() +1  
+  }
+
+  const stats = await TaskModel.aggregate([
+    {$match: {createdBy: userId}},
+    {$match: {$expr: { $eq: [ {$month: '$createdAt'}, month]}}},
+    {$sortByCount: "$status"}
+  ])
+  
+  res.status(StatusCodes.OK).json(stats)
 }
